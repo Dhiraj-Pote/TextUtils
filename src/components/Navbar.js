@@ -21,7 +21,7 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <h1>
-              I Love You Raina
+              I Love You Raina   
               <img src="/heartGif.gif" alt="" style={{ width: "50px" }} />
             </h1>
           </ul>
