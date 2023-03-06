@@ -19,12 +19,23 @@ export default function Navbar(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <h1>
               I Love You Raina   
               <img src="/heartGif.gif" alt="" style={{ width: "50px" }} />
             </h1>
-          </ul>
+          </ul> */}
+
+
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="./">{props.home}</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">About</a>
+                        </li>
+
+                    </ul>
 
           <form className="d-flex" role="search">
             <input
