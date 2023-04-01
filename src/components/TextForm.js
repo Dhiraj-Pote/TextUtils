@@ -35,7 +35,7 @@ export default function TextForm(props) {
 
   const handleOnNumClick = (event) => {
     try {
-      let newText = 'Enter: "DD-MM-YYYY m/f"';
+      let newText = 'Enter your dob & gender in this format, m(male) f(female) : "DD-MM-YYYY m/f"';
       setText(newText);
     } catch (error) {
       console.error(error);
