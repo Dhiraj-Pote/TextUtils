@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { evaluate } from 'mathjs';
-import { marriageYr } from './marriageYrs.js';
+// import { marriageYr } from './marriageYrs.js';
 
 export default function TextForm(props) {
 
@@ -33,10 +33,20 @@ export default function TextForm(props) {
     }
   }
 
+  const handleOnNumClick = (event) => {
+    try {
+      let newText = 'Enter: "DD-MM-YYYY m/f"';
+      setText(newText);
+    } catch (error) {
+      console.error(error);
+      setText('Invalid expression');
+    }
+  }
+
   const handleOnMarClick = (event) => {
     try {
-      let newText = text;
-      setText(newText.toString());
+      let newText = 'Enter: "DD-MM-YYYY m/f"';
+      setText(newText);
     } catch (error) {
       console.error(error);
       setText('Invalid Format');
@@ -64,16 +74,11 @@ export default function TextForm(props) {
 
           <div className="btn-group">
             <button type="button" className="btn btn-success mx-1 my-2 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            
-            <button 
-  className="btn btn-success mx-1 my-2" 
-  onClick={handleOnMarClick} 
-  style={{ height: '5px' , transform: 'scale(1)' , position: 'relative', top: '-13.5px'}}
->
-  Numerology
-</button>
 
-
+              <button className="btn btn-success mx-1 my-2" onClick={handleOnNumClick}
+                style={{ height: '5px', transform: 'scale(1)', position: 'relative', top: '-13.5px' }}>
+                Numerology
+              </button>
             </button>
             <div className="dropdown-menu">
               <button className="btn btn-success mx-1 my-2" onClick={handleOnMarClick}>check your marriage years</button>
@@ -81,17 +86,12 @@ export default function TextForm(props) {
             </div>
           </div>
 
+
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnUpClick}>Convert UPPERCASE</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnLoClick}>Convert lowercase</button>
-
-
-
-
-
-
-
         </div>
+
         <div className="container">
           <h2>Your Text Summary</h2>
           <p></p>
