@@ -51,21 +51,27 @@ export default function TextForm(props) {
       let newText = `By Numerology calculation your expected marriage year's are: ${years}`;
       setDateOfBirth(dateOfBirth);
 
-      if(dateOfBirth === "20-11-2005" && gender === "f" ) {setText(`Hello Raina!! 
+      if (dateOfBirth === "20-11-2005" && gender === "f") {
+        setText(`Hello Raina!! 
 Your Birthdate is 20Nov 2005
 Age: ${age}
 Marriage Status: Raina 💞 Dhiraj
 Psychic number: ${origin}
 ${newText}
+ref video link: "https://youtu.be/OKxvloNmcZY"
 `)
-    }
-    else {
-      setText(`Birth date: ${birthDate.format('DD MMM YYYY')}
+      }
+
+
+      else {
+        setText(`Birth date: ${birthDate.format('DD MMM YYYY')}
 Age: ${age}
 Psychic number: ${origin}
 ${newText}
+
 `);
-    }
+
+      }
     } catch (error) {
       console.error(error);
       setText('Invalid Format');
@@ -81,7 +87,7 @@ ${newText}
       }
       else {
         let dob = prompt("Enter your Birth Date in 'DD-MM-YYYY' Format:");
-        let newText = planet(getSum(dob.slice(0, 2)));
+        let newText = planet(getSum(dob.split("-")[0]));
         setText(newText);
       }
     } catch (error) {
@@ -106,7 +112,13 @@ ${newText}
       <div className='container'>
         <div className="mb-3">
           <h1><label htmlFor="Box" className="form-label">{props.text}</label></h1>
-          <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
+
+          <div>{text === "" ? (
+            <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
+          ) : (<>
+            <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
+            <a href="https://youtu.be/OKxvloNmcZY" className="ps-2" target = "_blank">ref video</a>
+          </>)} </div>
 
           <button className="btn btn-success dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Numerology
@@ -116,13 +128,11 @@ ${newText}
             <li><button className="btn btn-success mx-1 my-2" onClick={handleOnPlaClick}>check your planet</button></li>
           </ul>
 
-
-
-
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnUpClick}>Convert UPPERCASE</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnLoClick}>Convert lowercase</button>
         </div>
+
 
         <div className="container">
           <h2>Your Text Summary</h2>

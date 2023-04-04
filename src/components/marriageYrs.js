@@ -207,7 +207,7 @@ Hence persons bearing this number are perennially on the hunt for either love or
         case (7):
             return (`People born on number 7 ruled by Neptune, 
             
-are extremely independent, original and have a marked individuality. 
+You are extremely independent, original and have a marked individuality. 
 Most Number 7's like you are colossally gifted with exceptional mental faculties. Basically your imaginative superiority is one of your major advantages.
 As Neptune is a mental planet, therefore, Number 7's are considered to be exceedingly moody & whimsical.
 You are often religious too, and have an undyingly strong spiritual connect.
