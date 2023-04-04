@@ -57,15 +57,15 @@ export function marriageYr(dob, gender) {
 
 
     function boy() {
-        //const MmarriageAge = [24, 25, 26, 27, 28, 29, 30, 31, 32]
+        //const MmarriageAge = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 
         let MrespectiveCurrentYr = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             MrespectiveCurrentYr.push((24 + i) + birthDate.year());
         }
 
         const MrespectiveCurrentOrigin = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             MrespectiveCurrentOrigin.push(getSum(getSum(MrespectiveCurrentYr[i]) + tempOrigin));
         }
 
@@ -78,7 +78,7 @@ export function marriageYr(dob, gender) {
         //const Mkeys = Object.keys(MmappedObj)
 
         const MmatchingIndices = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             if (OriginArr.includes(Mvalues[i])) {
                 MmatchingIndices.push(i);
             }
@@ -97,15 +97,15 @@ export function marriageYr(dob, gender) {
 
     function girl() {
 
-        //const FmarriageAge = [22, 23, 24, 25, 26, 27, 28, 29, 30]
+        //const FmarriageAge = [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
 
         let FrespectiveCurrentYr = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             FrespectiveCurrentYr.push((22 + i) + birthDate.year());
         }
 
         const FrespectiveCurrentOrigin = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             FrespectiveCurrentOrigin.push(getSum(getSum(FrespectiveCurrentYr[i]) + tempOrigin));
         }
 
@@ -118,7 +118,7 @@ export function marriageYr(dob, gender) {
         //const Fkeys = Object.keys(FmappedObj)
 
         const FmatchingIndices = [];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 12; i++) {
             if (OriginArr.includes(Fvalues[i])) {
                 FmatchingIndices.push(i);
             }

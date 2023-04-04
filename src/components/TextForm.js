@@ -47,20 +47,22 @@ export default function TextForm(props) {
       const age = currentDate.diff(birthDate, 'years');
 
       const origin = getSum(birthDate.date());
-      console.log("Psychic number: " + origin);
 
       let newText = `By Numerology calculation your expected marriage year's are: ${years}`;
       setDateOfBirth(dateOfBirth);
 
-      if(dateOfBirth === "20-11-2005" && gender === "f" ) {setText(`Hello Raina!! Your Birthdate is 20Nov 2005
+      if(dateOfBirth === "20-11-2005" && gender === "f" ) {setText(`Hello Raina!! 
+Your Birthdate is 20Nov 2005
 Age: ${age}
 Marriage Status: Raina 💞 Dhiraj
+Psychic number: ${origin}
 ${newText}
 `)
     }
     else {
       setText(`Birth date: ${birthDate.format('DD MMM YYYY')}
 Age: ${age}
+Psychic number: ${origin}
 ${newText}
 `);
     }
