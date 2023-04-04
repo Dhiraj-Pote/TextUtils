@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
@@ -8,7 +8,25 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
   const [originalText, setOriginalText] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [showVideo, setShowVideo] = useState(false)
 
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    fetch(`https://api.textgears.com/correct?key=wRzWkBFXnVZDeMhq&ai=1&text=${text}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (text !== "") {
+          setText(data.response.corrected)
+        }
+      })
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [clicked])
+
+  const handleOnGraClick = (event) => {
+    setShowVideo(false)
+    setClicked((pre) => !pre);
+  }
 
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -16,18 +34,21 @@ export default function TextForm(props) {
   }
 
   const handleOnUpClick = (event) => {
+    setShowVideo(false)
     let newText = text.toUpperCase();
     setText(newText);
   }
 
 
   const handleOnLoClick = (event) => {
+    setShowVideo(false)
     let newText = text.toLowerCase();
     setText(newText);
   }
 
   const handleOnExClick = (event) => {
     try {
+      setShowVideo(false)
       let newText = evaluate(text);
       setText(newText.toString());
     } catch (error) {
@@ -36,8 +57,13 @@ export default function TextForm(props) {
     }
   }
 
+
+
   const handleOnMarClick = (event) => {
     try {
+
+      setShowVideo(true)
+
       let dateOfBirth = prompt("Enter your Birth Date in 'DD-MM-YYYY' Format:");
       let gender = prompt("Enter your gender ('f' or 'm'):");
       let years = marriageYr(dateOfBirth, gender);
@@ -58,10 +84,8 @@ Age: ${age}
 Marriage Status: Raina 💞 Dhiraj
 Psychic number: ${origin}
 ${newText}
-ref video link: "https://youtu.be/OKxvloNmcZY"
 `)
       }
-
 
       else {
         setText(`Birth date: ${birthDate.format('DD MMM YYYY')}
@@ -81,6 +105,7 @@ ${newText}
 
   const handleOnPlaClick = (event) => {
     try {
+      setShowVideo(false)
       if (dateOfBirth) {
         let newText = planet(getSum(dateOfBirth.slice(0, 2)));
         setText(newText);
@@ -106,19 +131,15 @@ ${newText}
     return sum;
   }
 
-
   return (
     <>
       <div className='container'>
         <div className="mb-3">
           <h1><label htmlFor="Box" className="form-label">{props.text}</label></h1>
-
-          <div>{text === "" ? (
-            <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
-          ) : (<>
-            <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
-            <a href="https://youtu.be/OKxvloNmcZY" className="ps-2" target = "_blank">ref video</a>
-          </>)} </div>
+          <textarea className="form-control" value={text} onChange={handleOnChange} id="Box" rows="7"></textarea>
+          {showVideo && (
+            <div><a href="https://youtu.be/OKxvloNmcZY" className="ps-2" target="_blank" rel="noreferrer">ref video</a></div>
+          )}
 
           <button className="btn btn-success dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Numerology
@@ -128,6 +149,7 @@ ${newText}
             <li><button className="btn btn-success mx-1 my-2" onClick={handleOnPlaClick}>check your planet</button></li>
           </ul>
 
+          <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnUpClick}>Convert UPPERCASE</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnLoClick}>Convert lowercase</button>
