@@ -38,12 +38,22 @@
 }
 
 .btn-darkgreen {
-  background-color: #059405dd; /* Dark Green */
-  border-color: #04c404;
+  background-color: #13cf135a; /* Dark Green */
+  border-color: #13cf135a;
 }
 
 .btn-darkgreen:hover {
-  background-color: #059405dd; /* Dark Green */
-  border-color: #04c404;
+  background-color: #13cf135a; /* Dark Green */
+  border-color: #13cf135a;
+}
+
+.btn-darkgreen:active {
+  background-color: #13cf135a; /* Dark Green */
+  border-color: #13cf135a;
+}
+
+
+.btn:focus {
+  outline: none;
 }
 

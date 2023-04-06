@@ -3,6 +3,10 @@ import moment from 'moment';
 import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
 
+const config = require('../config.js');
+
+const apiKey = config.openaiApiKey;
+
 export default function TextForm(props) {
 
   const [text, setText] = useState("");
@@ -30,11 +34,11 @@ export default function TextForm(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.API_KEY}`
+          "Authorization": `Bearer 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`
         },
         body: JSON.stringify({
           prompt: text,
-          max_tokens: 300,
+          max_tokens: 100,
           n: 1,
           stop: ["\n"]
         })
