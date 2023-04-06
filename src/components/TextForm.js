@@ -23,6 +23,40 @@ export default function TextForm(props) {
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [clicked])
 
+
+  const handleOnGPTClick = (event) => {
+    try {
+      fetch("https://api.openai.com/v1/engines/text-davinci-002/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer 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`
+        },
+        body: JSON.stringify({
+          prompt: text,
+          max_tokens: 300,
+          n: 1,
+          stop: ["\n"]
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`API returned error: ${response.status} ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data)
+          setText(data.choices[0].text.trim());
+        });
+
+    } catch (error) {
+      console.error(error);
+      setText("Invalid Format");
+    }
+  };
+
+
   const handleOnGraClick = (event) => {
     setShowVideo(false)
     setClicked((pre) => !pre);
@@ -57,8 +91,6 @@ export default function TextForm(props) {
     }
   }
 
-
-
   const handleOnMarClick = (event) => {
     try {
 
@@ -92,7 +124,6 @@ ${newText}
 Age: ${age}
 Psychic number: ${origin}
 ${newText}
-
 `);
 
       }
@@ -151,6 +182,7 @@ ${newText}
 
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
+          <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnUpClick}>Convert UPPERCASE</button>
           <button className="btn btn-primary mx-2 my-2" onClick={handleOnLoClick}>Convert lowercase</button>
         </div>

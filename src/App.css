@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-darkgreen {
+  background-color: #059405dd; /* Dark Green */
+  border-color: #04c404;
+}
+
+.btn-darkgreen:hover {
+  background-color: #059405dd; /* Dark Green */
+  border-color: #04c404;
+}
+
