@@ -25,4 +25,4 @@ yarn-error.log*
 
 #api KEY
 .env
-
+src/components/TextForm.js

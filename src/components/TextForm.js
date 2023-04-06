@@ -3,9 +3,9 @@ import moment from 'moment';
 import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
 
-const config = require('../config.js');
+// const config = require('../config.js');
 
-const apiKey = config.openaiApiKey;
+// const apiKey = config.openaiApiKey;
 
 export default function TextForm(props) {
 
