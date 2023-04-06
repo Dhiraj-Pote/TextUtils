@@ -30,7 +30,7 @@ export default function TextForm(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer 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`
+          "Authorization": `Bearer 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`
         },
         body: JSON.stringify({
           prompt: text,
