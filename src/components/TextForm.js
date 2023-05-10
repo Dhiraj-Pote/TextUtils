@@ -174,8 +174,14 @@ ${newText}
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
-          <button className="btn btn-primary mx-2 my-2" onClick={handleOnUpClick}>Convert UPPERCASE</button>
-          <button className="btn btn-primary mx-2 my-2" onClick={handleOnLoClick}>Convert lowercase</button>
+
+          <button className="btn btn-secondary dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Change CASE
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><button className="btn btn-secondary mx-1 my-2" onClick={handleOnUpClick}>Convert to UPPERCASE</button></li>
+            <li><button className="btn btn-secondary mx-1 my-2" onClick={handleOnLoClick}>Convert to lowercase</button></li>
+          </ul>
         </div>
 
 
