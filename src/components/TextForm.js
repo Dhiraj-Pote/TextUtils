@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
-
-// const config = require('../config.js');
-
-// const apiKey = config.openaiApiKey;
+import { Configuration, OpenAIApi } from "openai"
+import API_KEY from '../apikey.js';
 
 export default function TextForm(props) {
 
@@ -30,36 +28,25 @@ export default function TextForm(props) {
 
   const handleOnGPTClick = (event) => {
     try {
-      fetch("https://api.openai.com/v1/engines/text-davinci-002/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer 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`
-        },
-        body: JSON.stringify({
-          prompt: text,
-          max_tokens: 100,
-          n: 1,
-          stop: ["\n"]
+      const openAi = new OpenAIApi(
+        new Configuration({
+          apiKey: API_KEY,
         })
+      )
+
+      openAi.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: text }],
+      }).then(res => {
+        console.log(res.data.choices[0].message.content)
+        setText(res.data.choices[0].message.content)
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`API returned error: ${response.status} ${response.statusText}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data)
-          setText(data.choices[0].text.trim());
-        });
 
     } catch (error) {
       console.error(error);
       setText("Invalid Format");
     }
   };
-
 
   const handleOnGraClick = (event) => {
     setShowVideo(false)
@@ -117,7 +104,7 @@ export default function TextForm(props) {
         setText(`Hello Raina!! 
 Your Birthdate is 20Nov 2005
 Age: ${age}
-Marriage Status: Raina 💞 Dhiraj
+Future Marriage Status: Raina 💞 Dhiraj
 Psychic number: ${origin}
 ${newText}
 `)

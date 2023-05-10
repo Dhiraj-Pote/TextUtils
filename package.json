@@ -12,6 +12,7 @@
     "openai": "^3.2.1",
     "os": "^0.1.2",
     "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "prompt-sync": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -47,6 +48,6 @@
   "devDependencies": {
     "querystring": "^0.2.1",
     "url": "^0.11.0",
-    "webpack": "^5.77.0"
+    "webpack": "^5.82.0"
   }
 }
