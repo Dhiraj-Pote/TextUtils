@@ -3,7 +3,7 @@ import moment from 'moment';
 import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
 import { Configuration, OpenAIApi } from "openai"
-import API_KEY from '../apikey.js';
+import API_KEY from './key.js';
 
 export default function TextForm(props) {
 
