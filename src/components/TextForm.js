@@ -153,6 +153,60 @@ ${newText}
     return sum;
   }
 
+  const handleOnFlamesClick = (event) => {
+    let yourName = prompt('Enter Your Name');
+    let partnerName = prompt('Enter your crush\'s name');
+
+    yourName = yourName.toLowerCase().replace(/\s/g, '');
+    partnerName = partnerName.toLowerCase().replace(/\s/g, '');
+
+    let remainingLetters = '';
+
+    yourName.split('').forEach(letter => {
+      if (!partnerName.includes(letter)) {
+        remainingLetters += letter;
+      }
+    });
+
+    partnerName.split('').forEach(letter => {
+      if (!yourName.includes(letter)) {
+        remainingLetters += letter;
+      }
+    });
+    console.log(remainingLetters)
+    console.log(remainingLetters.length)
+    let num = 0;
+    if (remainingLetters.length % 6 === 0)
+      num = 1;
+    else
+      num = remainingLetters.length % 6;
+
+    switch (num) {
+      case 1:
+        setText(`Friendship: Hurray! ${yourName} and ${partnerName} share a bond of friendship that will last a lifetime. 💙`)
+        break;
+      case 2:
+        setText(`Love: Congratulations, ${yourName} and ${partnerName} are a perfect match made in heaven. ❤️`)
+        break;
+      case 3:
+        setText(`Affection: ${yourName} and ${partnerName} have a special kind of affection that is truly heartwarming. 💕`)
+        break;
+      case 4:
+        setText(`Marriage: The future looks bright for ${yourName} and ${partnerName}. They'll build a strong and successful life together. 💍`)
+        break;
+      case 5:
+        setText(`Enemy: Unfortunately, it seems that ${yourName} and ${partnerName} won't get along very well.😔`)
+        break;
+      case 6:
+        setText(`Sibling: ${yourName} and ${partnerName} have a deep connection that can withstand the test of time. 👨‍❤️‍👨`)
+        break;
+      default:
+        setText("Oops, there seem an error")
+        break;
+    }
+  }
+
+
   return (
     <>
       <div className='container'>
@@ -171,9 +225,10 @@ ${newText}
             <li><button className="btn btn-success mx-1 my-2" onClick={handleOnPlaClick}>check your planet</button></li>
           </ul>
 
-          <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
-          <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
+          <button className="btn btn-danger mx-2 my-2" onClick={handleOnFlamesClick}>FLAMES</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
+          <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
+          <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
 
           <button className="btn btn-secondary dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Change CASE
