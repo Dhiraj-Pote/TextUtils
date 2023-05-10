@@ -157,19 +157,19 @@ ${newText}
     let yourName = prompt('Enter Your Name');
     let partnerName = prompt('Enter your crush\'s name');
 
-    yourName = yourName.toLowerCase().replace(/\s/g, '');
-    partnerName = partnerName.toLowerCase().replace(/\s/g, '');
+    let yourNamelow = yourName.toLowerCase();
+    let partnerNamelow = partnerName.toLowerCase();
 
     let remainingLetters = '';
 
-    yourName.split('').forEach(letter => {
-      if (!partnerName.includes(letter)) {
+    yourNamelow.split('').forEach(letter => {
+      if (!partnerNamelow.includes(letter)) {
         remainingLetters += letter;
       }
     });
 
-    partnerName.split('').forEach(letter => {
-      if (!yourName.includes(letter)) {
+    partnerNamelow.split('').forEach(letter => {
+      if (!yourNamelow.includes(letter)) {
         remainingLetters += letter;
       }
     });
