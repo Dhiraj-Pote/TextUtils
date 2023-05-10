@@ -1,6 +1,9 @@
+* {
+  background-color: #f1f5f5;
+}
+
 .App {
   text-align: center;
-  
 }
 
 .App-logo {
@@ -56,6 +59,15 @@
   outline: none;
 }
 
-* {
-  background-color: #f1f5f5;
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.clr-btn {
+  padding: 2.5px;
+  margin-left: 10px;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-size: 14px; /* or adjust the margin as per your needs */
 }

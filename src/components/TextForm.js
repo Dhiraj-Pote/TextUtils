@@ -14,6 +14,11 @@ export default function TextForm(props) {
 
   const [clicked, setClicked] = useState(false);
 
+
+  const handleOnClearScreen = (event) => {
+    setText("");
+  }
+
   useEffect(() => {
     fetch(`https://api.textgears.com/correct?key=wRzWkBFXnVZDeMhq&ai=1&text=${text}`)
       .then((res) => res.json())
@@ -238,6 +243,8 @@ ${newText}
             <li><button className="btn btn-secondary mx-1 my-2" onClick={handleOnLoClick}>Convert to lowercase</button></li>
           </ul>
         </div>
+        <button className="clr-btn" onClick={handleOnClearScreen} >clear screen</button>
+
 
 
         <div className="container">
