@@ -72,11 +72,11 @@
   font-size: 14px; /* or adjust the margin as per your needs */
 }
 
-#wea{
+#wea {
   background-color: rgb(122, 181, 190);
-  background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-general-weather-sky-image_260454.jpg');
+  background-image: url("assets/weather.jpg");
   background-size: cover;
   color: rgb(0, 0, 0);
-  text-emphasis-color:rgb(0, 0, 0); 
+  text-emphasis-color: rgb(0, 0, 0);
   text-shadow: rgb(0, 0, 0);
 }
