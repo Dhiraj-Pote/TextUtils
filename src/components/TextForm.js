@@ -4,6 +4,8 @@ import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
 import { Configuration, OpenAIApi } from "openai"
 import API_KEY from './key.js';
+import { useSpeechSynthesis } from 'react-speech-kit';
+
 
 export default function TextForm(props) {
 
@@ -11,9 +13,16 @@ export default function TextForm(props) {
   const [originalText, setOriginalText] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [showVideo, setShowVideo] = useState(false)
-
   const [clicked, setClicked] = useState(false);
 
+  const { speak } = useSpeechSynthesis();
+
+
+
+  const handleOnChange = (event) => {
+    setText(event.target.value);
+    setOriginalText(event.target.value);
+  }
 
   const handleOnClearScreen = (event) => {
     setText("");
@@ -53,14 +62,16 @@ export default function TextForm(props) {
     }
   };
 
+  const handleOnTxtClick = (event) => {
+    const voice = window.speechSynthesis.getVoices().find(v => v.name === 'Microsoft Heera - English (India)' && v.lang === 'en-IN');
+    speak({ text: text, voice: voice });
+
+  }
+
+
   const handleOnGraClick = (event) => {
     setShowVideo(false)
     setClicked((pre) => !pre);
-  }
-
-  const handleOnChange = (event) => {
-    setText(event.target.value);
-    setOriginalText(event.target.value);
   }
 
   const handleOnUpClick = (event) => {
@@ -232,6 +243,7 @@ ${newText}
 
           <button className="btn btn-danger mx-2 my-2" onClick={handleOnFlamesClick}>FLAMES</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
+          <button className="btn btn-danger mx-2 my-2" onClick={handleOnTxtClick}>Text to Speech</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
 

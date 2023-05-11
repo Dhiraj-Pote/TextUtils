@@ -8,7 +8,8 @@ function App() {
 
   return (
     <>
-      <Navbar Nav="Textutils" home="Home" />
+      <Navbar Nav={<span><b>Textutils</b>: It's all about texts</span>} home="Home" />
+
       <div className="container">
         <div className="input-wrapper">
           <TextForm text="Enter Text Below" />
