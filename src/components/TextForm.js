@@ -4,7 +4,6 @@ import { evaluate } from 'mathjs';
 import { marriageYr, planet } from './marriageYrs.js';
 import { Configuration, OpenAIApi } from "openai"
 import API_KEY from './key.js';
-import { useSpeechSynthesis } from 'react-speech-kit';
 
 
 export default function TextForm(props) {
@@ -14,9 +13,6 @@ export default function TextForm(props) {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [showVideo, setShowVideo] = useState(false)
   const [clicked, setClicked] = useState(false);
-
-  const { speak } = useSpeechSynthesis();
-
 
 
   const handleOnChange = (event) => {
@@ -63,9 +59,11 @@ export default function TextForm(props) {
   };
 
   const handleOnTxtClick = (event) => {
-    const voice = window.speechSynthesis.getVoices().find(v => v.name === 'Microsoft Heera - English (India)' && v.lang === 'en-IN');
-    speak({ text: text, voice: voice });
-
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.text = text;
+    utterance.voice = speechSynthesis.getVoices().find(v => v.lang === 'en-IN' && v.name === 'Microsoft Heera - English (India)');
+    synth.speak(utterance);
   }
 
 
