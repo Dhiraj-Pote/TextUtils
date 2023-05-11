@@ -248,17 +248,17 @@ ${newText}
             <li><button className="btn btn-success mx-1 my-2" onClick={handleOnPlaClick}>check your planet</button></li>
           </ul>
 
-          <button className="btn btn-danger mx-2 my-2" onClick={handleOnFlamesClick}>FLAMES</button>
+          <button className="btn btn-danger mx-2 my-2" id = "flames" onClick={handleOnFlamesClick}>FLAMES</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
           <button className="btn btn-success mx-2 my-2" id="wea" onClick={handleOnWeaClick} >Check Weather</button>
           <button className="btn btn-danger mx-2 my-2" onClick={handleOnTxtClick}>Text to Speech</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
 
-          <button className="btn btn-secondary dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn-secondary dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
             Change CASE
           </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
             <li><button className="btn btn-secondary mx-1 my-2" onClick={handleOnUpClick}>Convert to UPPERCASE</button></li>
             <li><button className="btn btn-secondary mx-1 my-2" onClick={handleOnLoClick}>Convert to lowercase</button></li>
           </ul>

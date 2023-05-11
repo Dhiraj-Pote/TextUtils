@@ -73,10 +73,19 @@
 }
 
 #wea {
-  background-color: rgb(122, 181, 190);
   background-image: url("assets/weather.jpg");
   background-size: cover;
   color: rgb(0, 0, 0);
-  text-emphasis-color: rgb(0, 0, 0);
-  text-shadow: rgb(0, 0, 0);
+}
+
+#flames {
+  background-image: url("assets/flames.jpg");
+  background-size: cover;
+  color: rgb(0, 0, 0);
+}
+
+#dropdownMenuButton {
+  background-image: url("assets/planet.jpg");
+  background-size: cover;
+  color: rgb(255, 255, 255);
 }
