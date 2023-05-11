@@ -35,6 +35,18 @@ export default function TextForm(props) {
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [clicked])
 
+  const handleOnWeaClick = async (event) => {
+    try {
+      let city = prompt("Enter Your City Name")
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=863242cfb2b1d357e6093d9a4df19a4b&units=metric`);
+      const data = await response.json();
+      const weather = `Weather in ${data.name}: ${data.main.temp} °C, ${data.weather[0].description}`;
+      setText(weather);
+    } catch (error) {
+      console.error(error);
+      setText("Sorry, we could not find the weather information for the entered city.");
+    }
+  }
 
   const handleOnGPTClick = (event) => {
     try {
@@ -48,7 +60,6 @@ export default function TextForm(props) {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: text }],
       }).then(res => {
-        console.log(res.data.choices[0].message.content)
         setText(res.data.choices[0].message.content)
       })
 
@@ -133,7 +144,6 @@ ${newText}
 
       }
     } catch (error) {
-      console.error(error);
       setText('Invalid Format');
     }
   }
@@ -188,7 +198,6 @@ ${newText}
       }
     });
     console.log(remainingLetters)
-    console.log(remainingLetters.length)
     let num = 0;
     if (remainingLetters.length % 6 === 0)
       num = 1;
@@ -241,6 +250,7 @@ ${newText}
 
           <button className="btn btn-danger mx-2 my-2" onClick={handleOnFlamesClick}>FLAMES</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
+          <button className="btn btn-success mx-2 my-2" id="wea" onClick={handleOnWeaClick} >Check Weather</button>
           <button className="btn btn-danger mx-2 my-2" onClick={handleOnTxtClick}>Text to Speech</button>
           <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
