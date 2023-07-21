@@ -5,7 +5,6 @@ import { marriageYr, planet } from './marriageYrs.js';
 import { Configuration, OpenAIApi } from "openai"
 import API_KEY from './key.js';
 
-
 export default function TextForm(props) {
 
   const [text, setText] = useState("");
@@ -38,7 +37,7 @@ export default function TextForm(props) {
   const handleOnWeaClick = async (event) => {
     try {
       let city = prompt("Enter Your City Name")
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=863242cfb2b1d357e6093d9a4df19a4b&units=metric`);
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=01041cb4cf4d18a798e5fb0af0a848ed&units=metric`);
       const data = await response.json();
       const weather = `Weather in ${data.name}: ${data.main.temp} °C, ${data.weather[0].description}`;
       setText(weather);
@@ -248,11 +247,11 @@ ${newText}
             <li><button className="btn btn-success mx-1 my-2" onClick={handleOnPlaClick}>check your planet</button></li>
           </ul>
 
-          <button className="btn btn-danger mx-2 my-2" id = "flames" onClick={handleOnFlamesClick}>FLAMES</button>
+          <button className="btn btn-danger mx-2 my-2" id="flames" onClick={handleOnFlamesClick}>FLAMES</button>
           <button className="btn btn-darkgreen mx-2 my-2" onClick={handleOnGPTClick}>Chat with GPT</button>
           <button className="btn btn-success mx-2 my-2" id="wea" onClick={handleOnWeaClick} >Check Weather</button>
           <button className="btn btn-danger mx-2 my-2" onClick={handleOnTxtClick}>Text to Speech</button>
-          <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Solve Expression</button>
+          <button className="btn btn-info mx-2 my-2" onClick={handleOnExClick}>Calculate</button>
           <button className="btn btn-warning mx-2 my-2" onClick={handleOnGraClick}>Correct Grammer</button>
 
           <button className="btn btn-secondary dropdown-toggle mx-2 my-2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -264,7 +263,6 @@ ${newText}
           </ul>
         </div>
         <button className="clr-btn" onClick={handleOnClearScreen} >clear screen</button>
-
 
 
         <div className="container">
