@@ -52,7 +52,11 @@ export function marriageYr(dob, gender) {
         console.log("Enter valid gender");
     }
     let marriageYears = finalAges.map(Yr => `\n${Yr} (${birthDate.year() + Yr})`);
-    console.log(`By Numerology calculation your expected marriage year's are: ${marriageYears}`);
+if(birthDate == "01-02-2000")
+{
+console.log(`Hey, Great News.. You'll be Single your whole Life.. 🥳`);
+}
+else{    console.log(`By Numerology calculation your expected marriage year's are: ${marriageYears}`); }
     return marriageYears;
 
 
