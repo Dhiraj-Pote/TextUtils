@@ -55,7 +55,7 @@ export function marriageYr(dob, gender) {
     if (birthDate.format('DD-MM-YYYY') === "01-02-2000") {
         console.log("Condition matched for special date: 01-02-2000");
         console.log(`Hey, Great News.. You'll be Single your whole Life.. 🥳`);
-        return `<br />Hey, Great News.. You'll be Single your whole Life.. 🥳`;
+        return `\nHey, Great News.. You'll be Single your whole Life.. 🥳`;
     }
 
     // Determine marriage years based on gender
