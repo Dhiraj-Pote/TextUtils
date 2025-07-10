@@ -52,13 +52,13 @@ export function marriageYr(dob, gender) {
         console.log("Enter valid gender");
     }
     let marriageYears = finalAges.map(Yr => `\n${Yr} (${birthDate.year() + Yr})`);
-if(birthDate === "01-02-2000")
-{
-console.log(`Hey, Great News.. You'll be Single your whole Life.. 🥳`);
-}
-else{    console.log(`By Numerology calculation your expected marriage year's are: ${marriageYears}`); }
+if (birthDate.format('DD-MM-YYYY') === "01-02-2000") {
+    console.log(`Hey, Great News.. You'll be Single your whole Life.. 🥳`);
+    return []; // Return an empty array or handle this scenario as needed
+} else {
+    console.log(`By Numerology calculation your expected marriage year's are: ${marriageYears}`);
     return marriageYears;
-
+}
 
     function boy() {
         //const MmarriageAge = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
