@@ -1,3 +1,4 @@
+
 export function marriageYr(dob, gender) {
 
     const moment = require('moment');
@@ -51,14 +52,25 @@ export function marriageYr(dob, gender) {
     } else {
         console.log("Enter valid gender");
     }
-    let marriageYears = finalAges.map(Yr => `\n${Yr} (${birthDate.year() + Yr})`);
+let marriageYears;
+
+// Parsing the birthDate
+const birthDate = moment(dob, 'DD-MM-YYYY');
+console.log(`Raw input date: ${dob}`);
+console.log(`Formatted birthDate: ${birthDate.format('DD-MM-YYYY')}`);
+
+// Special case for "01-02-2000"
 if (birthDate.format('DD-MM-YYYY') === "01-02-2000") {
+    console.log("Condition matched for special date: 01-02-2000");
     console.log(`Hey, Great News.. You'll be Single your whole Life.. 🥳`);
     return [];
 }
 
-// Compute marriage years only for other cases
-let marriageYears = finalAges.map(Yr => `\n${Yr} (${birthDate.year() + Yr})`);
+// Compute marriage years for other cases
+console.log("Condition did not match for special date: 01-02-2000");
+
+// Only compute when not the special case
+marriageYears = finalAges.map(Yr => `\n${Yr} (${birthDate.year() + Yr})`);
 console.log(`By Numerology calculation your expected marriage year's are: ${marriageYears}`);
 return marriageYears;
 
